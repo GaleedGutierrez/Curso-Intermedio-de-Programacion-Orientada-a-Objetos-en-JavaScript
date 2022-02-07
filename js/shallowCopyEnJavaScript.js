@@ -15,3 +15,4 @@ for (prop in obj1) {
 
 const obj3 = Object.assign({}, obj1)
 const obj4 = Object.create(obj1)
+// 
