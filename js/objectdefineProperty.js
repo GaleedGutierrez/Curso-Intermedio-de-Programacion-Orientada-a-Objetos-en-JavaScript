@@ -10,36 +10,36 @@ const juan = {
     },
 }
 
-// Object.defineProperty(juan, 'pruevaNasa', {
-//     value: 'extraterrestres',
-//     enumerable: false,
-//     writable: false,
-//     configurable: false
-// })
+Object.defineProperty(juan, 'pruevaNasa', {
+    value: 'extraterrestres',
+    enumerable: false,
+    writable: false,
+    configurable: false
+})
 
-// Object.defineProperty(juan, 'navigator', {
-//     value: 'Chrome',
-//     enumerable: false,
-//     writable: true,
-//     configurable: true
-// })
+Object.defineProperty(juan, 'navigator', {
+    value: 'Chrome',
+    enumerable: false,
+    writable: true,
+    configurable: true
+})
 
-// Object.defineProperty(juan, 'editor', {
-//     value: 'VSCode',
-//     enumerable: true,
-//     writable: false,
-//     configurable: true
-// })
+Object.defineProperty(juan, 'editor', {
+    value: 'VSCode',
+    enumerable: true,
+    writable: false,
+    configurable: true
+})
 
-// Object.defineProperty(juan, 'terminal', {
-//     value: 'WSL',
-//     enumerable: true,
-//     writable: true,
-//     configurable: false
-// })
+Object.defineProperty(juan, 'terminal', {
+    value: 'WSL',
+    enumerable: true,
+    writable: true,
+    configurable: false
+})
 
 // Object.seal(juan)
-Object.freeze(juan)
+// Object.freeze(juan)
 
 console.group('getOwnPropertyDescriptors')
 console.log(Object.getOwnPropertyDescriptors(juan))
