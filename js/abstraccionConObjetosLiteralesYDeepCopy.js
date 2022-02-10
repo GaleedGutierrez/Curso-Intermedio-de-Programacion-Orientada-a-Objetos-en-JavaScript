@@ -33,19 +33,28 @@ function deepCopy (subject) {
     return copySubject
 }
 
-const obj1 = {
-    a: 'a',
-    b: 'b',
-    c: {
-        d: 'd',
-        e:'e'
-    },
-
-    f: [1, 2, 3, 4, 5],
-
-    editA () {
-        this.a = 'AAAAAAAAAA'
+const studenBase = {
+    name: undefined,
+    email: undefined,
+    age: undefined,
+    approvedCourses: undefined,
+    learningPaths: undefined,
+    socialMedia: {
+        twitter: undefined,
+        instragram: undefined,
+        facebook: undefined
     }
 }
 
-const obj2 = deepCopy(obj1)
+const juan = deepCopy(studenBase)
+// Object.defineProperty(juan, 'name', 
+//     {
+//         value: 'Juanito',
+//         configurable: false,
+//         writable
+//     }
+// )
+// Object.seal(juan)
+Object.freeze(juan)
+
+juan.name = 'Juan'
