@@ -1,6 +1,6 @@
 const isArray = array => Array.isArray(array);
 
-function createStudent 
+function Student 
     (
         {
             name = requieredParam ('name'), 
@@ -16,98 +16,54 @@ function createStudent
     ) 
 {
 
-    const private = {
-        '#name': name,
-        '#learningPaths': learningPaths,
+    if (isArray(learningPaths)) {
+        this.learningPaths = []
+        for (const learningPathIndex in learningPaths) {
+            if (learningPaths[learningPathIndex] instanceof LearningPaths) {
+                this.learningPaths.push(learningPaths[learningPathIndex])
+            }
+        }
     }
-
-    const public = {
-        age,
-        email,
-        approveCourses,
-        socialMedia: {
-            twitter,
-            instagram,
-            facebook
-        },
-
-        get name () {
-            return private['#name']
-        },
-
-        set name(newName) {
-            newName.length !== 0
-                ? private['#name'] = newName
-                : console.warn( `Tu nombre debe tener al menos un carácter.` )
-        },
-
-        get learningPaths () {
-            return private['#learningPaths']
-        },
-
-        set learningPaths(newLearningPaths) {
-            if (!newLearningPaths.name) { 
-                console.warn('Tu Learning Path no tiene la propiedad name')
-                return
-            }
-
-            if (!newLearningPaths.courses) {
-                console.warn('Tu Learning Path no tiene courses')
-                return
-            }
-
-            if (!isArray(newLearningPaths.courses)) {
-                console.warn('Tu Learning Path no es una lista cursos')
-                return
-            }
-
-            private['#learningPaths'].push(newLearningPaths)
-        },
+        
+    this.name = name
+    this.emai = email
+    this.age = age
+    this.approveCourses = approveCourses
+    this.socialMedia = {
+        twitter, 
+        instagram,
+        facebook, 
     }
-
-    return public
 }
 
-function createLearningPaths (
+function LearningPaths (
     {
         name = requieredParam("name"),
         courses = [],
     }
 ) 
 {
-    const private = {
-        "#name": name,
-        "#courses": courses
-    }
-
-    const public = {
-        get name () {
-            return private['#name']
-        },
-
-        set name(newName) {
-            newName.length !== 0
-                ? private['#name'] = newName
-                : console.warn( `Tu nombre debe tener al menos un carácter.` )
-        },
-
-        get courses () {
-            return private['#courses']
-        },
-    }
-
-    return public
+    this.name = name
+    this.courses = courses
 }
 
 function requieredParam (param) {
     throw new Error(`${param} es obligatorio`)
 }
 
-const juan = createStudent(
+const escuelaWeb = new LearningPaths({name: "Escuela de Desarrollo Web", courses:[]})
+const escuelaData = new LearningPaths({name: "Escuela de Data Science", courses:[]})
+
+const juan = new Student(
     {
         name: 'Juanito',
         age: 18,
         email: 'juanito@juanito.com',
-        twitter: 'fjuand'
+        twitter: 'fjuand',
+        learningPaths: [
+            escuelaWeb,
+            escuelaData,
+            {name: "Escuela de Impostor", courses:[]}
+        ]
     }
 )
